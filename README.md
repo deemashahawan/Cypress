@@ -1,10 +1,13 @@
+
 it('Open staff page',()=>{
         cy.get('#staffs_wrapper').should('exist');
         cy.get('#staffs_filter').should('exist');
         cy.get('.dataTables_scroll').should('exist');
     });
+    
 
 *This test case determines whether three items on the staff page have particular selectors or classes. The test case will not pass if any of these components cannot be identified. By doing this, it is made sure that the staff page is presented properly and has all of the necessary components.
+
 
  it('Add staff with valid name',()=>{
         cy.get('.toolbar').should('exist');
@@ -13,7 +16,9 @@ it('Open staff page',()=>{
         cy.get('tr#staff_Tala').should('exist');
     });
 
+
 *This test case verifies that a new staff member row with the name "Tala" is added to the table when a valid name "Tala" is typed in the input field and the add button is pressed. To ensure that the inclusion of the staff member was successful, the existence of the necessary components is confirmed.
+
 
 it('Add staff with not exist name',()=>{
         cy.get('.toolbar').should('exist');
@@ -22,7 +27,9 @@ it('Add staff with not exist name',()=>{
         cy.get('tr#staff_Ahmad55').should('exist');
     });
 
+
 *This test case confirms that a new staff member row with the specified name is added to the table when an invalid name, such as "Ahmad55," is provided in the input field and the add button is pressed. To ensure that the inclusion of the staff member was successful, the existence of the necessary components is confirmed.
+
 
 it('search for valid staff',()=>{
         cy.get('label').contains('Search').should('exist');
@@ -33,11 +40,13 @@ it('search for valid staff',()=>{
 
 *This test case makes sure that the staff member row in the table is displayed when the search phrase "Deema" is typed into the search input box. To ensure that the search feature is functioning as intended, the existence of the pertinent items is confirmed.
 
+
 it('search for invalid staff',()=>{
         cy.get('label').contains('Search').should('exist');
         cy.get('input[type="search"]').type('Ali');
         cy.get('td.dataTables_empty').should('be.visible').and('contain.text', 'No matching records found');
     });
+
 
 *This test case confirms that the table shows a message stating the lack of matching entries when an invalid search word, such as "Ali," is typed into the search input box. To ensure that the search capability is functioning as intended, the existence of the pertinent items and the displayed text are checked.
 
@@ -112,7 +121,9 @@ it('test Grade with all outher filters',()=>{
         cy.get('#snackbar').should('contain', 'The goal(s) have been graded successfully.');    
     });
 
+
 *This test case verifies the accurate application of the filters for subject 90, all levels, and group "g4". Additionally, it confirms that the grade filter can be used and that the snackbar displays the anticipated success message once the grade has been applied.
+
 
 it('Test Unobserve filter',()=>{
         cy.get('#all_goals').check({force: true})
@@ -128,5 +139,6 @@ it('Test Unobserve filter',()=>{
         cy.get('button').contains('Unobserve').click()
 
     });
+
 
 *The criteria used in this test case are applied to all goals, subjects, levels, and group "g4". Next, it confirms that the level filter checkbox is indeed selected. By pressing the relevant button, it finally initiates the "Unobserve" operation.
